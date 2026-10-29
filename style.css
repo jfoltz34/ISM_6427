@@ -1,0 +1,108 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  color: #fff;
+  background: linear-gradient(160deg, #4a90d9 0%, #2c5fa8 50%, #1b3a6b 100%);
+  background-attachment: fixed;
+  transition: background 0.6s ease;
+}
+
+/* Background changes with the weather */
+body.clear-day  { background: linear-gradient(160deg, #56a8f5 0%, #2f7de1 55%, #1c56b0 100%); background-attachment: fixed; }
+body.clear-night{ background: linear-gradient(160deg, #1d2b4f 0%, #0f1a36 60%, #070d1f 100%); background-attachment: fixed; }
+body.cloudy     { background: linear-gradient(160deg, #8a9bb0 0%, #5d6f86 55%, #3e4c60 100%); background-attachment: fixed; }
+body.rain       { background: linear-gradient(160deg, #5b6f8a 0%, #3d4f68 55%, #26334a 100%); background-attachment: fixed; }
+body.storm      { background: linear-gradient(160deg, #434b63 0%, #2a2f42 55%, #16192a 100%); background-attachment: fixed; }
+body.snow       { background: linear-gradient(160deg, #b9cde0 0%, #8ea7c2 55%, #6b84a1 100%); background-attachment: fixed; }
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* The frosted-glass look */
+.glass {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 22px;
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: 16px 18px;
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+  margin-bottom: 10px;
+}
+
+.search { display: flex; gap: 8px; padding: 8px; }
+.search input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 10px;
+}
+.search input::placeholder { color: rgba(255, 255, 255, 0.65); }
+.search button {
+  background: rgba(255, 255, 255, 0.22);
+  border: none;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.search button:hover { background: rgba(255, 255, 255, 0.32); }
+
+.current { text-align: center; padding: 28px 18px; }
+.current h1 { font-size: 30px; font-weight: 500; }
+.temp { font-size: 88px; font-weight: 200; line-height: 1.05; }
+.condition { font-size: 20px; opacity: 0.9; }
+.range { font-size: 16px; opacity: 0.8; margin-top: 4px; }
+
+.hourly {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.hourly::-webkit-scrollbar { display: none; }
+.hour { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 44px; font-size: 15px; }
+.hour .icon { font-size: 22px; }
+
+.daily { list-style: none; }
+.daily li {
+  display: grid;
+  grid-template-columns: 56px 32px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 16px;
+}
+.daily li:first-child { border-top: none; }
+.daily .icon { font-size: 20px; text-align: center; }
+.daily .temps { display: flex; justify-content: flex-end; gap: 12px; }
+.daily .lo { opacity: 0.65; }
+
+.details { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tile p { font-size: 26px; font-weight: 400; }
+
+.credit { text-align: center; font-size: 12px; opacity: 0.7; }
+.credit a { color: #fff; }
